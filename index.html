@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>The Wedding of [Bride Name] & [Groom Name] | An Invitation</title>
+  
+  <!-- Google Fonts: Luxury Serif & Romantic Calligraphy -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="is-closed">
+
+  <!-- =========================================================
+       BACKGROUND PARTICLE CANVAS & AMBIENT GLOW
+       ========================================================= -->
+  <canvas id="particleCanvas" class="particle-canvas"></canvas>
+  <div class="ambient-glow glow-top-left"></div>
+  <div class="ambient-glow glow-bottom-right"></div>
+  <div class="mughal-pattern-bg"></div>
+
+  <!-- =========================================================
+       AUDIO CONTROLLER (FLOATING)
+       ========================================================= -->
+  <div class="audio-control-wrapper" id="audioControl" title="Toggle Background Music">
+    <button class="audio-btn" id="audioToggleBtn" aria-label="Toggle ambient music">
+      <span class="music-icon" id="musicIcon">♪</span>
+      <span class="sound-wave wave-1"></span>
+      <span class="sound-wave wave-2"></span>
+      <span class="sound-wave wave-3"></span>
+    </button>
+    <audio id="bgAudio" loop preload="none">
+      <source src="assets/music/ambient.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
+
+  <!-- =========================================================
+       PHASE 1: FULL-SCREEN INITIAL SCENE (3D ENVELOPE)
+       ========================================================= -->
+  <div class="envelope-scene-container" id="envelopeScene">
+    <div class="envelope-outer-viewport">
+      
+      <!-- Ambient Arch Ornament Behind Envelope -->
+      <div class="scene-arch-halo">
+        <svg viewBox="0 0 600 700" class="arch-svg-halo">
+          <path d="M 60,650 L 60,320 C 60,160 170,80 300,40 C 430,80 540,160 540,320 L 540,650" fill="none" stroke="rgba(212,175,55,0.2)" stroke-width="1.5" stroke-dasharray="4 6"/>
+          <path d="M 90,650 L 90,340 C 90,200 185,130 300,90 C 415,130 510,200 510,340 L 510,650" fill="none" stroke="rgba(212,175,55,0.12)" stroke-width="1"/>
+        </svg>
+      </div>
+
+      <!-- 3D Realistic Envelope Assembly -->
+      <div class="envelope-3d-wrapper" id="envelope3d">
+        
+        <!-- Back flap/pocket interior -->
+        <div class="env-pocket-back">
+          <div class="env-interior-gold-foil"></div>
+        </div>
+
+        <!-- The Inner Invitation Card that slides up and blooms -->
+        <div class="env-card-insert" id="envCardInsert">
+          <div class="insert-border-outer"></div>
+          <div class="insert-border-inner"></div>
+          
+          <div class="insert-content-preview">
+            <div class="insert-arch-crest">
+              <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
+                <path d="M 4,22 C 10,8 15,2 20,2 C 25,2 30,8 36,22" stroke="#d4af37" stroke-width="1"/>
+                <circle cx="20" cy="8" r="2" fill="#d4af37"/>
+              </svg>
+            </div>
+            <p class="insert-pretitle">The Wedding of</p>
+            <h2 class="insert-names">[Bride Name]<br/><span class="amp">&</span><br/>[Groom Name]</h2>
+            <div class="gold-mini-rule"></div>
+            <p class="insert-date">[Day, Date Month, Year]</p>
+          </div>
+        </div>
+
+        <!-- Front Pocket Fold -->
+        <div class="env-pocket-front">
+          <div class="env-paper-texture"></div>
+          <div class="env-pocket-triangles"></div>
+          
+          <!-- Exterior Card Callout Text -->
+          <div class="env-exterior-typography" id="envelopeExteriorContent">
+            <div class="exterior-bismillah-crest">
+              <svg width="60" height="30" viewBox="0 0 60 30">
+                <path d="M 5,20 Q 30,5 55,20" stroke="#d4af37" stroke-width="1" fill="none"/>
+                <circle cx="30" cy="12" r="3" fill="#d4af37"/>
+                <circle cx="20" cy="17" r="1.5" fill="#d4af37"/>
+                <circle cx="40" cy="17" r="1.5" fill="#d4af37"/>
+              </svg>
+            </div>
+            
+            <p class="env-header-badge">THE WEDDING CELEBRATION OF</p>
+            
+            <h1 class="env-couple-title">
+              <span class="name-part">[BRIDE NAME]</span>
+              <span class="name-connector">&</span>
+              <span class="name-part">[GROOM NAME]</span>
+            </h1>
+
+            <p class="env-sub-tagline">A Celebration of Love, Faith & Family</p>
+            
+            <div class="ornament-divider">
+              <span class="div-line"></span>
+              <span class="div-diamond">◆</span>
+              <span class="div-line"></span>
+            </div>
+
+            <!-- Action Button with Golden Shimmer -->
+            <div class="open-btn-container">
+              <button class="btn-open-invitation" id="btnOpenInvitation">
+                <span class="btn-shimmer"></span>
+                <span class="btn-text">OPEN INVITATION</span>
+                <span class="btn-ornament">✦</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Envelope 3D Triangular Flap -->
+        <div class="env-flap-tri" id="envFlap">
+          <div class="env-flap-shape"></div>
+          <div class="env-flap-gold-edge"></div>
+        </div>
+
+        <!-- Golden Wax Seal (Attached over the flap seam) -->
+        <div class="env-wax-seal" id="waxSeal">
+          <div class="wax-seal-body">
+            <div class="wax-ring-outer"></div>
+            <div class="wax-ring-inner"></div>
+            <span class="wax-monogram">W</span>
+            <div class="wax-sheen"></div>
+          </div>
+          <div class="wax-pulse-glow" id="waxGlow"></div>
+        </div>
+
+      </div><!-- /envelope-3d-wrapper -->
+    </div><!-- /envelope-outer-viewport -->
+  </div><!-- /envelope-scene-container -->
+
+
+  <!-- =========================================================
+       PHASE 2: FULL-SCREEN LUXURY WEDDING EXPERIENCE
+       ========================================================= -->
+  <div class="main-invitation-container" id="mainInvitation" aria-hidden="true">
+    
+    <!-- Top Floating Navigation Bar -->
+    <header class="luxury-navbar" id="navbar">
+      <div class="nav-container">
+        
+        <!-- Brand Monogram -->
+        <a href="#hero" class="nav-brand">
+          <span class="brand-crest">✦</span>
+          <span class="brand-names">[B & G]</span>
+          <span class="brand-crest">✦</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="nav-links-desktop" id="navLinks">
+          <a href="#hero" class="nav-link active">HOME</a>
+          <a href="#events" class="nav-link">EVENTS</a>
+          <a href="#story" class="nav-link">OUR STORY</a>
+          <a href="#gallery" class="nav-link">GALLERY</a>
+          <a href="#venue" class="nav-link">VENUE</a>
+          <a href="#rsvp" class="nav-link btn-nav-rsvp">RSVP</a>
+        </nav>
+
+        <!-- Right Side Nav Actions -->
+        <div class="nav-actions">
+          <button class="btn-close-invitation" id="btnCloseInvitation" title="Fold and Close Invitation">
+            <span class="close-icon">✕</span>
+            <span class="close-label">CLOSE CARD</span>
+          </button>
+
+          <!-- Mobile Hamburger Trigger -->
+          <button class="mobile-menu-trigger" id="mobileMenuTrigger" aria-label="Toggle navigation menu">
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+          </button>
+        </div>
+
+      </div><!-- /nav-container -->
+
+      <!-- Mobile Dropdown Navigation -->
+      <div class="mobile-nav-drawer" id="mobileDrawer">
+        <a href="#hero" class="mobile-nav-item">HOME</a>
+        <a href="#events" class="mobile-nav-item">EVENTS</a>
+        <a href="#story" class="mobile-nav-item">OUR STORY</a>
+        <a href="#gallery" class="mobile-nav-item">GALLERY</a>
+        <a href="#venue" class="mobile-nav-item">VENUE</a>
+        <a href="#rsvp" class="mobile-nav-item mobile-rsvp-btn">RSVP NOW</a>
+        <button class="mobile-close-card-btn" id="mobileCloseCardBtn">
+          ✦ CLOSE INVITATION ✦
+        </button>
+      </div>
+    </header>
+
+
+    <!-- =======================================================
+         SECTION 1: HERO (FULL SCREEN)
+         ======================================================= -->
+    <section class="screen-section hero-section" id="hero">
+      <div class="hero-arch-frame">
+        
+        <!-- Grand Mughal Arch Silhouette & SVG Lineart -->
+        <div class="mughal-arch-border">
+          <svg viewBox="0 0 800 1000" preserveAspectRatio="none" class="arch-frame-svg">
+            <defs>
+              <linearGradient id="goldArchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f5e0a0"/>
+                <stop offset="40%" stop-color="#d4af37"/>
+                <stop offset="70%" stop-color="#91722e"/>
+                <stop offset="100%" stop-color="#f5e0a0"/>
+              </linearGradient>
+            </defs>
+            <!-- Outer Multi-cusped Arch -->
+            <path d="M 50,950 L 50,380 C 50,180 180,100 400,40 C 620,100 750,180 750,380 L 750,950" 
+                  fill="none" stroke="url(#goldArchGrad)" stroke-width="1.8"/>
+            <!-- Inner Arch -->
+            <path d="M 70,950 L 70,390 C 70,205 195,130 400,75 C 605,130 730,205 730,390 L 730,950" 
+                  fill="none" stroke="url(#goldArchGrad)" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.6"/>
+            <!-- Top Cusped Crown Fluting -->
+            <circle cx="400" cy="30" r="4" fill="url(#goldArchGrad)"/>
+            <path d="M 360,70 Q 400,30 440,70" fill="none" stroke="url(#goldArchGrad)" stroke-width="1.2"/>
+          </svg>
+        </div>
+
+        <div class="hero-content reveal-on-scroll">
+          <div class="hero-crest">
+            <span class="crest-leaf">🌿</span>
+            <span class="crest-diamond">✦</span>
+            <span class="crest-leaf">🌿</span>
+          </div>
+
+          <p class="hero-invocation">Together with their families</p>
+          
+          <div class="hero-couple-block">
+            <h1 class="hero-bride-name">[BRIDE NAME]</h1>
+            <div class="hero-ampersand-wrap">
+              <span class="gold-dash"></span>
+              <span class="hero-ampersand">&</span>
+              <span class="gold-dash"></span>
+            </div>
+            <h1 class="hero-groom-name">[GROOM NAME]</h1>
+          </div>
+
+          <p class="hero-invitation-message">
+            Invite you to share in their joy, blessings, and celebration<br />
+            as they unite in holy matrimony
+          </p>
+
+          <div class="hero-date-pills">
+            <div class="date-pill">
+              <span class="pill-icon">📅</span>
+              <span class="pill-title">[DAY, DATE MONTH]</span>
+              <span class="pill-sub">[YEAR]</span>
+            </div>
+            <div class="pill-separator">◆</div>
+            <div class="date-pill">
+              <span class="pill-icon">⏰</span>
+              <span class="pill-title">[TIME]</span>
+              <span class="pill-sub">ONWARDS</span>
+            </div>
+            <div class="pill-separator">◆</div>
+            <div class="date-pill">
+              <span class="pill-icon">📍</span>
+              <span class="pill-title">[VENUE NAME]</span>
+              <span class="pill-sub">[CITY, PAKISTAN]</span>
+            </div>
+          </div>
+
+          <div class="hero-action-buttons">
+            <a href="#events" class="btn-luxury-primary">EXPLORE EVENTS</a>
+            <a href="#rsvp" class="btn-luxury-secondary">CONFIRM ATTENDANCE</a>
+          </div>
+
+        </div><!-- /hero-content -->
+
+        <div class="scroll-down-indicator">
+          <span class="scroll-text">SCROLL TO CELEBRATE</span>
+          <div class="mouse-scroll-wheel">
+            <span class="wheel-dot"></span>
+          </div>
+        </div>
+
+      </div><!-- /hero-arch-frame -->
+    </section>
+
+
+    <!-- =======================================================
+         SECTION 2: EVENTS (4 ELEGANT CARDS)
+         ======================================================= -->
+    <section class="screen-section events-section" id="events">
+      <div class="section-container">
+        
+        <div class="section-header reveal-on-scroll">
+          <span class="section-badge">CELEBRATION TIMELINE</span>
+          <h2 class="section-title">Wedding Events</h2>
+          <div class="section-divider">
+            <span class="div-line"></span>
+            <span class="div-symbol">✦</span>
+            <span class="div-line"></span>
+          </div>
+          <p class="section-subtitle">
+            Four sacred occasions filled with tradition, prayers, song, and joyful reunion.
+          </p>
+        </div>
+
+        <div class="events-grid">
+          
+          <!-- Event 1: Mehndi -->
+          <div class="event-card event-mehndi reveal-on-scroll">
+            <div class="card-corner-ornament ornament-tl"></div>
+            <div class="card-corner-ornament ornament-tr"></div>
+            <div class="card-corner-ornament ornament-bl"></div>
+            <div class="card-corner-ornament ornament-br"></div>
+            
+            <div class="event-icon-frame">
+              <img src="assets/icons/henna.svg" alt="Mehndi Henna Icon" class="event-svg-icon" />
+            </div>
+
+            <span class="event-category">NIGHT OF HENNA & DANCE</span>
+            <h3 class="event-title">MEHNDI</h3>
+            
+            <div class="event-details">
+              <div class="detail-row">
+                <span class="detail-icon">📅</span>
+                <span class="detail-text"><strong>[DATE]</strong></span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-icon">⏰</span>
+                <span class="detail-text">[TIME, e.g. 7:30 PM]</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-icon">📍</span>
+                <span class="detail-text">[VENUE NAME & HALL]</span>
+              </div>
+            </div>
+
+            <p class="event-description">
+              An evening of auspicious golden henna, colorful traditional attire, joyful dholak beats, and lively musical performances.
+            </p>
+
+            <div class="event-dress-code">
+              <span class="dress-label">ATTIRE:</span> Vibrant Yellow, Emerald & Festive Traditional
+            </div>
+          </div>
+
+          <!-- Event 2: Nikah -->
+          <div class="event-card event-nikah reveal-on-scroll" style="animation-delay: 0.15s;">
+            <div class="card-corner-ornament ornament-tl"></div>
+            <div class="card-corner-ornament ornament-tr"></div>
+            <div class="card-corner-ornament ornament-bl"></div>
+            <div class="card-corner-ornament ornament-br"></div>
+            
+            <div class="event-icon-frame">
+              <img src="assets/icons/rings.svg" alt="Nikah Rings Icon" class="event-svg-icon" />
+            </div>
+
+            <span class="event-category">THE SACRED COVENANT</span>
+            <h3 class="event-title">NIKAH</h3>
+            
+            <div class="event-details">
+              <div class="detail-row">
+                <span class="detail-icon">📅</span>
+                <span class="detail-text"><strong>[DATE]</strong></span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-icon">⏰</span>
+                <span class="detail-text">[TIME, e.g. 5:00 PM]</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-icon">📍</span>
+                <span class="detail-text">[VENUE NAME / MOSQUE]</span>
+              </div>
+            </div>
+
+            <p class="event-description">
+              The holy union solemnized with prayers and Quranic recitation, sealing two souls into a blessed lifelong journey of affection and mercy.
+            </p>
+
+            <div class="event-dress-code">
+              <span class="dress-label">ATTIRE:</span> Pure Ivory, Subtle Gold & Modest Elegance
+            </div>
+          </div>
+
+          <!-- Event 3: Baraat -->
+          <div class="event-card event-baraat reveal-on-scroll" style="animation-delay: 0.3s;">
+            <div class="card-corner-ornament ornament-tl"></div>
+            <div class="card-corner-ornament ornament-tr"></div>
+            <div class="card-corner-ornament ornament-bl"></div>
+            <div class="card-corner-ornament ornament-br"></div>
+            
+            <div class="event-icon-frame">
+              <img src="assets/icons/garland.svg" alt="Baraat Garland Icon" class="event-svg-icon" />
+            </div>
+
+            <span class="event-category">THE GRAND PROCESSION</span>
+            <h3 class="event-title">BARAAT</h3>
+            
+            <div class="event-details">
+              <div class="detail-row">
+                <span class="detail-icon">📅</span>
+                <span class="detail-text"><strong>[DATE]</strong></span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-icon">⏰</span>
+                <span class="detail-text">[TIME, e.g. 8:00 PM]</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-icon">📍</span>
+                <span class="detail-text">[VENUE NAME & BANQUET]</span>
+              </div>
+            </div>
+
+            <p class="event-description">
+              The royal arrival of the groom and his family, followed by a majestic feast and the emotional, heartfelt farewell of the bride (Rukhsati).
+            </p>
+
+            <div class="event-dress-code">
+              <span class="dress-label">ATTIRE:</span> Royal Regal Maroon, Antique Gold & Formal
+            </div>
+          </div>
+
+          <!-- Event 4: Walima -->
+          <div class="event-card event-walima reveal-on-scroll" style="animation-delay: 0.45s;">
+            <div class="card-corner-ornament ornament-tl"></div>
+            <div class="card-corner-ornament ornament-tr"></div>
+            <div class="card-corner-ornament ornament-bl"></div>
+            <div class="card-corner-ornament ornament-br"></div>
+            
+            <div class="event-icon-frame">
+              <img src="assets/icons/banquet.svg" alt="Walima Banquet Icon" class="event-svg-icon" />
+            </div>
+
+            <span class="event-category">RECEPTION OF BLESSINGS</span>
+            <h3 class="event-title">WALIMA</h3>
+            
+            <div class="event-details">
+              <div class="detail-row">
+                <span class="detail-icon">📅</span>
+                <span class="detail-text"><strong>[DATE]</strong></span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-icon">⏰</span>
+                <span class="detail-text">[TIME, e.g. 8:00 PM]</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-icon">📍</span>
+                <span class="detail-text">[VENUE NAME & GRAND BALLROOM]</span>
+              </div>
+            </div>
+
+            <p class="event-description">
+              Hosted with immense gratitude by the groom's family to celebrate the newlywed couple in an atmosphere of warmth, culinary delights, and starlight.
+            </p>
+
+            <div class="event-dress-code">
+              <span class="dress-label">ATTIRE:</span> Sophisticated Emerald, Champagne & Black Tie
+            </div>
+          </div>
+
+        </div><!-- /events-grid -->
+
+      </div><!-- /section-container -->
+    </section>
+
+
+    <!-- =======================================================
+         SECTION 3: OUR STORY (CINEMATIC TIMELINE)
+         ======================================================= -->
+    <section class="screen-section story-section" id="story">
+      <div class="section-container">
+        
+        <div class="section-header reveal-on-scroll">
+          <span class="section-badge">WRITTEN IN THE STARS</span>
+          <h2 class="section-title">Our Story</h2>
+          <div class="section-divider">
+            <span class="div-line"></span>
+            <span class="div-symbol">❦</span>
+            <span class="div-line"></span>
+          </div>
+          <p class="section-subtitle">
+            A quiet whisper of fate that blossomed into an eternal commitment of hearts.
+          </p>
+        </div>
+
+        <div class="story-timeline-wrapper">
+          <div class="timeline-line"></div>
+
+          <!-- Story Item 1 -->
+          <div class="timeline-card reveal-on-scroll">
+            <div class="timeline-node">
+              <span class="node-dot"></span>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-year">2022</span>
+              <h3 class="timeline-title">The First Glimpse</h3>
+              <p class="timeline-text">
+                Under the fragrant rain-swept canopy of Lahore, our families crossed paths at a mutual celebration. A polite conversation sparked an undeniable warmth that neither of us could forget.
+              </p>
+            </div>
+          </div>
+
+          <!-- Story Item 2 -->
+          <div class="timeline-card reveal-on-scroll right-card">
+            <div class="timeline-node">
+              <span class="node-dot"></span>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-year">2023</span>
+              <h3 class="timeline-title">A New Chapter</h3>
+              <p class="timeline-text">
+                Shared values, endless laughter over steaming cups of Kashmiri chai, and discovering that in each other's dreams, we found a safe harbor of peace and understanding.
+              </p>
+            </div>
+          </div>
+
+          <!-- Story Item 3 -->
+          <div class="timeline-card reveal-on-scroll">
+            <div class="timeline-node">
+              <span class="node-dot"></span>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-year">2025</span>
+              <h3 class="timeline-title">Forever & Always</h3>
+              <p class="timeline-text">
+                With the heartfelt blessings of our beloved parents and elders, a promise was made to walk through every season of life side-by-side, holding each other in steadfast love.
+              </p>
+            </div>
+          </div>
+
+          <!-- Story Item 4 -->
+          <div class="timeline-card reveal-on-scroll right-card">
+            <div class="timeline-node">
+              <span class="node-dot"></span>
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-year">2026</span>
+              <h3 class="timeline-title">The Wedding Day</h3>
+              <p class="timeline-text">
+                The beginning of forever. We gather with our nearest and dearest to seek prayers, exchange sacred vows, and begin our greatest adventure as husband and wife.
+              </p>
+            </div>
+          </div>
+
+        </div><!-- /story-timeline-wrapper -->
+
+      </div><!-- /section-container -->
+    </section>
+
+
+    <!-- =======================================================
+         SECTION 4: GALLERY (MASONRY & LIGHTBOX)
+         ======================================================= -->
+    <section class="screen-section gallery-section" id="gallery">
+      <div class="section-container">
+        
+        <div class="section-header reveal-on-scroll">
+          <span class="section-badge">CAPTURED TREASURES</span>
+          <h2 class="section-title">Moments & Memories</h2>
+          <div class="section-divider">
+            <span class="div-line"></span>
+            <span class="div-symbol">✦</span>
+            <span class="div-line"></span>
+          </div>
+          <p class="section-subtitle">
+            Glimpses into our celebration, traditions, and timeless memories. Click any image to view in high definition.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          
+          <!-- Image 1 -->
+          <div class="gallery-item reveal-on-scroll" data-index="0" data-caption="The Promise — A sacred journey destined together">
+            <div class="gallery-image-wrapper">
+              <img src="assets/images/gallery-1.svg" alt="The Promise Rings" class="gallery-thumb" />
+              <div class="gallery-overlay">
+                <span class="overlay-icon">🔍</span>
+                <span class="overlay-caption">The Promise</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image 2 -->
+          <div class="gallery-item reveal-on-scroll" data-index="1" data-caption="The Henna Night — Laughter and auspicious golden glow">
+            <div class="gallery-image-wrapper">
+              <img src="assets/images/gallery-2.svg" alt="Mehndi Henna Celebration" class="gallery-thumb" />
+              <div class="gallery-overlay">
+                <span class="overlay-icon">🔍</span>
+                <span class="overlay-caption">Henna Night</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image 3 -->
+          <div class="gallery-item reveal-on-scroll" data-index="2" data-caption="Twilight in Lahore — Historic marble arches and starlight">
+            <div class="gallery-image-wrapper">
+              <img src="assets/images/gallery-3.svg" alt="Twilight Architecture" class="gallery-thumb" />
+              <div class="gallery-overlay">
+                <span class="overlay-icon">🔍</span>
+                <span class="overlay-caption">Twilight Romance</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image 4 -->
+          <div class="gallery-item reveal-on-scroll" data-index="3" data-caption="The Sacred Nikah — Sealed with heartfelt prayers">
+            <div class="gallery-image-wrapper">
+              <img src="assets/images/gallery-4.svg" alt="The Sacred Nikah" class="gallery-thumb" />
+              <div class="gallery-overlay">
+                <span class="overlay-icon">🔍</span>
+                <span class="overlay-caption">The Sacred Nikah</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image 5 -->
+          <div class="gallery-item reveal-on-scroll" data-index="4" data-caption="The Baraat Procession — Royal entry and timeless welcome">
+            <div class="gallery-image-wrapper">
+              <img src="assets/images/gallery-5.svg" alt="The Baraat Procession" class="gallery-thumb" />
+              <div class="gallery-overlay">
+                <span class="overlay-icon">🔍</span>
+                <span class="overlay-caption">Baraat Arrival</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image 6 -->
+          <div class="gallery-item reveal-on-scroll" data-index="5" data-caption="The Walima Reception — Starlight banquet and family blessings">
+            <div class="gallery-image-wrapper">
+              <img src="assets/images/gallery-6.svg" alt="Walima Banquet" class="gallery-thumb" />
+              <div class="gallery-overlay">
+                <span class="overlay-icon">🔍</span>
+                <span class="overlay-caption">Walima Banquet</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /gallery-grid -->
+
+      </div><!-- /section-container -->
+    </section>
+
+    <!-- FULLSCREEN LIGHTBOX MODAL -->
+    <div class="lightbox-modal" id="lightboxModal" aria-hidden="true">
+      <button class="lightbox-close" id="lightboxCloseBtn" aria-label="Close Lightbox">✕</button>
+      
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrevBtn" aria-label="Previous image">‹</button>
+      <button class="lightbox-nav lightbox-next" id="lightboxNextBtn" aria-label="Next image">›</button>
+
+      <div class="lightbox-stage">
+        <img src="" alt="" class="lightbox-image" id="lightboxImage" />
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+      </div>
+    </div>
+
+
+    <!-- =======================================================
+         SECTION 5: VENUE & DIRECTIONS
+         ======================================================= -->
+    <section class="screen-section venue-section" id="venue">
+      <div class="section-container">
+        
+        <div class="section-header reveal-on-scroll">
+          <span class="section-badge">LOCATION & DETAILS</span>
+          <h2 class="section-title">The Grand Venue</h2>
+          <div class="section-divider">
+            <span class="div-line"></span>
+            <span class="div-symbol">❖</span>
+            <span class="div-line"></span>
+          </div>
+          <p class="section-subtitle">
+            An iconic setting designed to host our cherished guests in utmost comfort and grandeur.
+          </p>
+        </div>
+
+        <div class="venue-card-wrapper reveal-on-scroll">
+          
+          <div class="venue-ornament-frame">
+            <div class="venue-header-arch">
+              <svg width="120" height="40" viewBox="0 0 120 40">
+                <path d="M 10,38 C 30,10 50,5 60,5 C 70,5 90,10 110,38" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+                <circle cx="60" cy="12" r="3" fill="#d4af37"/>
+              </svg>
+            </div>
+
+            <span class="venue-label">OFFICIAL CELEBRATION LOCATION</span>
+            <h3 class="venue-name">[ROYAL PALACE & BANQUET HALL]</h3>
+            
+            <p class="venue-address">
+              12-Club Road, G.O.R. I, Mall Road Vicinity<br />
+              Lahore, Punjab, Pakistan
+            </p>
+
+            <div class="venue-highlights">
+              <div class="highlight-item">
+                <span class="hl-icon">🚗</span>
+                <span class="hl-text">Complimentary Valet Parking</span>
+              </div>
+              <div class="highlight-item">
+                <span class="hl-icon">🕌</span>
+                <span class="hl-text">Dedicated Prayer Hall & Ablution Area</span>
+              </div>
+              <div class="highlight-item">
+                <span class="hl-icon">✨</span>
+                <span class="hl-text">Wheelchair Accessible Entrance</span>
+              </div>
+            </div>
+
+            <!-- Get Directions Button linking to Google Maps -->
+            <div class="venue-actions">
+              <a href="https://maps.google.com/?q=Lahore,Pakistan" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="btn-luxury-primary" 
+                 id="btnGetDirections">
+                <span>📍 GET DIRECTIONS ON GOOGLE MAPS</span>
+              </a>
+            </div>
+
+            <div class="venue-note">
+              Please feel free to arrive 15 minutes prior to the scheduled start time to ensure relaxed seating.
+            </div>
+
+          </div><!-- /venue-ornament-frame -->
+
+        </div><!-- /venue-card-wrapper -->
+
+      </div><!-- /section-container -->
+    </section>
+
+
+    <!-- =======================================================
+         SECTION 6: RSVP FORM
+         ======================================================= -->
+    <section class="screen-section rsvp-section" id="rsvp">
+      <div class="section-container">
+        
+        <div class="section-header reveal-on-scroll">
+          <span class="section-badge">RESERVATION</span>
+          <h2 class="section-title">Kindly Respond</h2>
+          <div class="section-divider">
+            <span class="div-line"></span>
+            <span class="div-symbol">💌</span>
+            <span class="div-line"></span>
+          </div>
+          <p class="section-subtitle">
+            Your gracious presence will complete our joyous celebration. Please reply by <strong>[RSVP Date]</strong>.
+          </p>
+        </div>
+
+        <div class="rsvp-card-container reveal-on-scroll">
+          <form class="rsvp-form" id="rsvpForm" novalidate>
+            
+            <!-- Full Name -->
+            <div class="form-group">
+              <label for="rsvpName" class="form-label">YOUR FULL NAME *</label>
+              <input type="text" id="rsvpName" name="name" class="form-input" placeholder="e.g. Dr. & Mrs. Farooq Ahmed" required />
+              <span class="form-error" id="nameError">Please enter your name.</span>
+            </div>
+
+            <!-- Attendance Choice -->
+            <div class="form-group">
+              <label class="form-label">WILL YOU ATTEND? *</label>
+              <div class="attendance-options">
+                <label class="radio-card">
+                  <input type="radio" name="attendance" value="attending" checked />
+                  <span class="radio-box">
+                    <span class="radio-icon">🌸</span>
+                    <span class="radio-title">Joyfully Accepts</span>
+                    <span class="radio-desc">I will celebrate with you</span>
+                  </span>
+                </label>
+                <label class="radio-card">
+                  <input type="radio" name="attendance" value="declined" />
+                  <span class="radio-box">
+                    <span class="radio-icon">🕊️</span>
+                    <span class="radio-title">Regretfully Declines</span>
+                    <span class="radio-desc">Will be there in prayer & spirit</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Number of Guests -->
+            <div class="form-group" id="guestsGroup">
+              <label for="rsvpGuests" class="form-label">NUMBER OF GUESTS (INCLUDING YOURSELF)</label>
+              <select id="rsvpGuests" name="guests" class="form-select">
+                <option value="1">1 Person</option>
+                <option value="2" selected>2 Persons</option>
+                <option value="3">3 Persons</option>
+                <option value="4">4 Persons</option>
+                <option value="5+">5+ Persons (Family)</option>
+              </select>
+            </div>
+
+            <!-- Events Attending -->
+            <div class="form-group" id="eventsGroup">
+              <label class="form-label">EVENTS YOU WILL ATTEND</label>
+              <div class="checkbox-grid">
+                <label class="check-item">
+                  <input type="checkbox" name="events" value="Mehndi" checked />
+                  <span class="check-box"></span>
+                  <span class="check-label">Mehndi</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="events" value="Nikah" checked />
+                  <span class="check-box"></span>
+                  <span class="check-label">Nikah</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="events" value="Baraat" checked />
+                  <span class="check-box"></span>
+                  <span class="check-label">Baraat</span>
+                </label>
+                <label class="check-item">
+                  <input type="checkbox" name="events" value="Walima" checked />
+                  <span class="check-box"></span>
+                  <span class="check-label">Walima</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Warm Message -->
+            <div class="form-group">
+              <label for="rsvpMessage" class="form-label">SPECIAL WISHES / DIETARY NOTES</label>
+              <textarea id="rsvpMessage" name="message" class="form-textarea" rows="3" placeholder="Leave a prayer or note for the couple..."></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-submit-row">
+              <button type="submit" class="btn-luxury-primary btn-submit-rsvp" id="btnSubmitRsvp">
+                <span class="btn-spinner" id="btnSpinner"></span>
+                <span class="btn-text">CONFIRM RSVP</span>
+                <span class="btn-ornament">✦</span>
+              </button>
+            </div>
+
+          </form>
+
+          <!-- Success Confirmation Modal / Card -->
+          <div class="rsvp-success-card" id="rsvpSuccessCard">
+            <div class="success-crest">✦</div>
+            <h3 class="success-title">JazakAllah Khair!</h3>
+            <p class="success-message" id="successMessageText">
+              Your response has been received with immense warmth. We deeply look forward to celebrating together!
+            </p>
+            <div class="success-ornament">❦</div>
+            <button class="btn-luxury-secondary" id="btnResetRsvp">SUBMIT ANOTHER RESPONSE</button>
+          </div>
+
+        </div><!-- /rsvp-card-container -->
+
+      </div><!-- /section-container -->
+    </section>
+
+
+    <!-- =======================================================
+         SECTION 7: FOOTER & CLOSE INVITATION
+         ======================================================= -->
+    <footer class="luxury-footer">
+      <div class="footer-container">
+        
+        <div class="footer-crest">
+          <svg width="80" height="30" viewBox="0 0 80 30">
+            <path d="M 5,15 Q 40,2 75,15" stroke="#d4af37" stroke-width="1.2" fill="none"/>
+            <circle cx="40" cy="15" r="3.5" fill="#d4af37"/>
+            <circle cx="25" cy="15" r="2" fill="#d4af37"/>
+            <circle cx="55" cy="15" r="2" fill="#d4af37"/>
+          </svg>
+        </div>
+
+        <p class="footer-gratitude">
+          With Love, Duas & Sincere Gratitude<br />
+          <strong>The Families of [Bride Name] & [Groom Name]</strong>
+        </p>
+
+        <!-- Big Close Card Action Button -->
+        <div class="footer-close-action">
+          <button class="btn-luxury-secondary btn-footer-close" id="btnFooterClose">
+            <span class="close-icon">✉</span>
+            <span>CLOSE & FOLD INVITATION CARD</span>
+          </button>
+        </div>
+
+        <p class="footer-copyright">
+          © [YEAR] Digital Wedding Invitation. Crafted with Pakistani Emerald & Antique Gold Elegance.
+        </p>
+
+      </div><!-- /footer-container -->
+    </footer>
+
+  </div><!-- /main-invitation-container -->
+
+  <!-- JavaScript Entry Point -->
+  <script src="js/script.js"></script>
+</body>
+</html>

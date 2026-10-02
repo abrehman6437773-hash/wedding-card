@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="600" height="750">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020d06"/>
+      <stop offset="50%" stop-color="#092819"/>
+      <stop offset="100%" stop-color="#041209"/>
+    </linearGradient>
+    <linearGradient id="gold2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5e0a0"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#91722e"/>
+    </linearGradient>
+    <radialGradient id="glow2" cx="50%" cy="40%" r="45%">
+      <stop offset="0%" stop-color="#d4af37" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#020d06" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="750" fill="url(#bg2)"/>
+  <circle cx="300" cy="330" r="230" fill="url(#glow2)"/>
+  <!-- Borders -->
+  <rect x="25" y="25" width="550" height="700" fill="none" stroke="url(#gold2)" stroke-width="1.5" opacity="0.6"/>
+  <rect x="35" y="35" width="530" height="680" fill="none" stroke="url(#gold2)" stroke-width="0.7" opacity="0.3"/>
+  <!-- Intricate Henna Mehndi Mandala Artwork in Gold -->
+  <g transform="translate(300, 330)">
+    <circle cx="0" cy="0" r="140" fill="none" stroke="url(#gold2)" stroke-width="1.2" opacity="0.4"/>
+    <circle cx="0" cy="0" r="110" fill="none" stroke="url(#gold2)" stroke-width="1.8" stroke-dasharray="3 4"/>
+    <circle cx="0" cy="0" r="85" fill="none" stroke="url(#gold2)" stroke-width="1.2"/>
+    <circle cx="0" cy="0" r="45" fill="none" stroke="url(#gold2)" stroke-width="2"/>
+    <circle cx="0" cy="0" r="18" fill="url(#gold2)"/>
+    <!-- Radiating 12 Petals -->
+    <path d="M 0,-85 C -20,-60 -20,-45 0,-45 C 20,-45 20,-60 0,-85 Z" fill="url(#gold2)" opacity="0.7"/>
+    <path d="M 0,85 C -20,60 -20,45 0,45 C 20,45 20,60 0,85 Z" fill="url(#gold2)" opacity="0.7"/>
+    <path d="M -85,0 C -60,-20 -45,-20 -45,0 C -45,20 -60,20 -85,0 Z" fill="url(#gold2)" opacity="0.7"/>
+    <path d="M 85,0 C 60,-20 45,-20 45,0 C 45,20 60,20 85,0 Z" fill="url(#gold2)" opacity="0.7"/>
+    <!-- Diagonals -->
+    <g transform="rotate(45)">
+      <path d="M 0,-85 C -20,-60 -20,-45 0,-45 C 20,-45 20,-60 0,-85 Z" fill="url(#gold2)" opacity="0.6"/>
+      <path d="M 0,85 C -20,60 -20,45 0,45 C 20,45 20,60 0,85 Z" fill="url(#gold2)" opacity="0.6"/>
+      <path d="M -85,0 C -60,-20 -45,-20 -45,0 C -45,20 -60,20 -85,0 Z" fill="url(#gold2)" opacity="0.6"/>
+      <path d="M 85,0 C 60,-20 45,-20 45,0 C 45,20 60,20 85,0 Z" fill="url(#gold2)" opacity="0.6"/>
+    </g>
+    <!-- Outer delicate vine flourish -->
+    <circle cx="0" cy="-125" r="5" fill="url(#gold2)"/>
+    <circle cx="0" cy="125" r="5" fill="url(#gold2)"/>
+    <circle cx="-125" cy="0" r="5" fill="url(#gold2)"/>
+    <circle cx="125" cy="0" r="5" fill="url(#gold2)"/>
+  </g>
+  <!-- Labels -->
+  <text x="300" y="600" text-anchor="middle" font-family="'Cinzel', serif" font-size="20" letter-spacing="6" fill="#f5e0a0">THE HENNA NIGHT</text>
+  <text x="300" y="630" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="16" fill="#c5a059">Laughter, rhythmic beats, and auspicious golden glow</text>
+</svg>

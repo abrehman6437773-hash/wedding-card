@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="goldGarland" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5e0a0"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#91722e"/>
+    </linearGradient>
+  </defs>
+  <!-- Royal Turban Kalgi & Rose Garland for Baraat -->
+  <!-- Garland swag -->
+  <path d="M12,24 Q32,48 52,24" fill="none" stroke="url(#goldGarland)" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Rosettes along the swag -->
+  <circle cx="16" cy="27" r="4.5" fill="url(#goldGarland)" opacity="0.9"/>
+  <circle cx="26" cy="34" r="5" fill="url(#goldGarland)" opacity="0.9"/>
+  <circle cx="32" cy="36" r="6" fill="#f5e0a0"/>
+  <circle cx="32" cy="36" r="3" fill="#91722e"/>
+  <circle cx="38" cy="34" r="5" fill="url(#goldGarland)" opacity="0.9"/>
+  <circle cx="48" cy="27" r="4.5" fill="url(#goldGarland)" opacity="0.9"/>
+  <!-- Mughal Crown / Kalgi on Top -->
+  <path d="M26,18 L32,10 L38,18 Z" fill="url(#goldGarland)"/>
+  <circle cx="32" cy="8" r="2" fill="#ffffff"/>
+  <!-- Tassels -->
+  <line x1="32" y1="42" x2="32" y2="54" stroke="url(#goldGarland)" stroke-width="1.5" stroke-dasharray="1 2"/>
+  <circle cx="32" cy="56" r="2.5" fill="url(#goldGarland)"/>
+</svg>

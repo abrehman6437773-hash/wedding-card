@@ -1,0 +1,23 @@
+{
+  "name": "pakistani-luxury-wedding-invitation",
+  "version": "1.0.0",
+  "description": "A luxury full-screen interactive Pakistani wedding invitation web application featuring emerald green, antique gold, 3D envelope animation, and Mughal architectural aesthetics.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "wedding-invitation",
+    "interactive-invitation",
+    "pakistani-wedding",
+    "mughal-architecture",
+    "emerald-gold",
+    "3d-card"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

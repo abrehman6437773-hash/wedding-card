@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="600" height="750">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020a05"/>
+      <stop offset="50%" stop-color="#072215"/>
+      <stop offset="100%" stop-color="#010502"/>
+    </linearGradient>
+    <linearGradient id="gold5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5e0a0"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#91722e"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="750" fill="url(#bg5)"/>
+  <rect x="25" y="25" width="550" height="700" fill="none" stroke="url(#gold5)" stroke-width="1.5" opacity="0.6"/>
+  <rect x="35" y="35" width="530" height="680" fill="none" stroke="url(#gold5)" stroke-width="0.7" opacity="0.3"/>
+  <!-- Royal Baraat Procession Motif: Doli / Palanquin & Lanterns -->
+  <g transform="translate(140, 180)">
+    <!-- Hanging Mughal Lanterns Left & Right -->
+    <line x1="20" y1="0" x2="20" y2="60" stroke="url(#gold5)" stroke-width="1.2"/>
+    <ellipse cx="20" cy="80" rx="14" ry="20" fill="none" stroke="url(#gold5)" stroke-width="1.5"/>
+    <circle cx="20" cy="80" r="4" fill="#f5e0a0"/>
+
+    <line x1="300" y1="0" x2="300" y2="60" stroke="url(#gold5)" stroke-width="1.2"/>
+    <ellipse cx="300" cy="80" rx="14" ry="20" fill="none" stroke="url(#gold5)" stroke-width="1.5"/>
+    <circle cx="300" cy="80" r="4" fill="#f5e0a0"/>
+
+    <!-- Royal Doli / Carriage Dome -->
+    <!-- Dome Roof -->
+    <path d="M 60,190 C 100,100 220,100 260,190 Z" fill="none" stroke="url(#gold5)" stroke-width="2.5"/>
+    <circle cx="160" cy="95" r="4" fill="url(#gold5)"/>
+    <line x1="160" y1="80" x2="160" y2="95" stroke="url(#gold5)" stroke-width="2"/>
+    <!-- Body of Carriage with Arch Windows -->
+    <rect x="60" y="190" width="200" height="110" rx="4" fill="none" stroke="url(#gold5)" stroke-width="2"/>
+    <path d="M 90,270 L 90,220 C 90,205 130,205 130,220 L 130,270 Z" fill="none" stroke="url(#gold5)" stroke-width="1.2"/>
+    <path d="M 190,270 L 190,220 C 190,205 230,205 230,220 L 230,270 Z" fill="none" stroke="url(#gold5)" stroke-width="1.2"/>
+    <!-- Carrying Poles -->
+    <line x1="0" y1="240" x2="320" y2="240" stroke="url(#gold5)" stroke-width="3" stroke-linecap="round"/>
+    <!-- Tassels -->
+    <circle cx="90" cy="305" r="3" fill="url(#gold5)"/>
+    <circle cx="160" cy="305" r="3" fill="url(#gold5)"/>
+    <circle cx="230" cy="305" r="3" fill="url(#gold5)"/>
+  </g>
+  <!-- Labels -->
+  <text x="300" y="600" text-anchor="middle" font-family="'Cinzel', serif" font-size="20" letter-spacing="6" fill="#f5e0a0">THE BARAAT ARRIVAL</text>
+  <text x="300" y="630" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="16" fill="#c5a059">Procession of honor, festivity, and royal welcome</text>
+</svg>

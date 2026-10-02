@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="goldRings" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5e0a0"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#91722e"/>
+    </linearGradient>
+  </defs>
+  <!-- Interlocking Wedding Bands & Solitaire Gem -->
+  <g fill="none" stroke="url(#goldRings)" stroke-width="2.2">
+    <!-- Left Ring -->
+    <ellipse cx="26" cy="36" rx="14" ry="14" />
+    <!-- Right Ring -->
+    <ellipse cx="38" cy="36" rx="14" ry="14" />
+  </g>
+  <!-- Brilliant Cut Diamond on top of right ring -->
+  <polygon points="38,12 43,18 41,22 35,22 33,18" fill="url(#goldRings)" stroke="#ffffff" stroke-width="0.5"/>
+  <!-- Sparkles -->
+  <path d="M38,6 L39,10 L43,11 L39,12 L38,16 L37,12 L33,11 L37,10 Z" fill="#ffffff" opacity="0.9"/>
+  <circle cx="20" cy="24" r="1.5" fill="url(#goldRings)"/>
+  <circle cx="48" cy="26" r="1.2" fill="url(#goldRings)"/>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="600" height="750">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020905"/>
+      <stop offset="50%" stop-color="#082315"/>
+      <stop offset="100%" stop-color="#010603"/>
+    </linearGradient>
+    <linearGradient id="gold6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5e0a0"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#91722e"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="750" fill="url(#bg6)"/>
+  <rect x="25" y="25" width="550" height="700" fill="none" stroke="url(#gold6)" stroke-width="1.5" opacity="0.6"/>
+  <rect x="35" y="35" width="530" height="680" fill="none" stroke="url(#gold6)" stroke-width="0.7" opacity="0.3"/>
+  <!-- Walima Banquet & Chandeliers / Starlight -->
+  <!-- Grand Chandelier in Antique Gold -->
+  <g transform="translate(300, 140)">
+    <line x1="0" y1="0" x2="0" y2="70" stroke="url(#gold6)" stroke-width="2"/>
+    <ellipse cx="0" cy="70" rx="30" ry="8" fill="none" stroke="url(#gold6)" stroke-width="1.5"/>
+    <ellipse cx="0" cy="110" rx="70" ry="16" fill="none" stroke="url(#gold6)" stroke-width="2"/>
+    <ellipse cx="0" cy="150" rx="120" ry="24" fill="none" stroke="url(#gold6)" stroke-width="2.5"/>
+    <!-- Hanging crystal droplets -->
+    <line x1="-100" y1="150" x2="-100" y2="185" stroke="url(#gold6)" stroke-width="1" stroke-dasharray="1 2"/>
+    <circle cx="-100" cy="190" r="3" fill="#f5e0a0"/>
+    <line x1="-50" y1="150" x2="-50" y2="195" stroke="url(#gold6)" stroke-width="1" stroke-dasharray="1 2"/>
+    <circle cx="-50" cy="200" r="4" fill="#f5e0a0"/>
+    <line x1="0" y1="150" x2="0" y2="210" stroke="url(#gold6)" stroke-width="1.2" stroke-dasharray="1 2"/>
+    <polygon points="0,210 5,225 0,235 -5,225" fill="url(#gold6)"/>
+    <line x1="50" y1="150" x2="50" y2="195" stroke="url(#gold6)" stroke-width="1" stroke-dasharray="1 2"/>
+    <circle cx="50" cy="200" r="4" fill="#f5e0a0"/>
+    <line x1="100" y1="150" x2="100" y2="185" stroke="url(#gold6)" stroke-width="1" stroke-dasharray="1 2"/>
+    <circle cx="100" cy="190" r="3" fill="#f5e0a0"/>
+    <!-- Candle glow points on arms -->
+    <circle cx="-60" cy="105" r="3" fill="#ffffff"/>
+    <circle cx="60" cy="105" r="3" fill="#ffffff"/>
+    <circle cx="-110" cy="145" r="3" fill="#ffffff"/>
+    <circle cx="110" cy="145" r="3" fill="#ffffff"/>
+  </g>
+  <!-- Champagne Flutes & Floral Centerpiece at bottom -->
+  <g transform="translate(300, 460)">
+    <circle cx="0" cy="0" r="45" fill="none" stroke="url(#gold6)" stroke-width="1" stroke-dasharray="3 3"/>
+    <circle cx="0" cy="0" r="15" fill="url(#gold6)" opacity="0.6"/>
+    <!-- Intertwined celebratory stems -->
+    <path d="M -30,-40 L -15,10 L -30,15 M -15,10 L -15,40" stroke="url(#gold6)" stroke-width="1.5" fill="none"/>
+    <path d="M 30,-40 L 15,10 L 30,15 M 15,10 L 15,40" stroke="url(#gold6)" stroke-width="1.5" fill="none"/>
+  </g>
+  <!-- Labels -->
+  <text x="300" y="600" text-anchor="middle" font-family="'Cinzel', serif" font-size="20" letter-spacing="6" fill="#f5e0a0">THE WALIMA RECEPTION</text>
+  <text x="300" y="630" text-anchor="middle" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="16" fill="#c5a059">An evening of blessings, gratitude, and joyous banquet</text>
+</svg>
